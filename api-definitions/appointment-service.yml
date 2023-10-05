@@ -1,0 +1,70 @@
+openapi: 3.0.3
+info:
+  title: Appointment Service v1
+  description: |-
+    API for Appointment Service
+  termsOfService: http://swagger.io/terms/
+  version: 1.0.11
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+tags:
+  - name: Appointment
+    description: appointment with specialist who sees patient for a certain domain of expertise
+paths:
+  /api/v1/appointment:
+    post:
+      tags:
+        - Appointment
+      summary: Get all Appointments from the system
+      description: Get all Appointments from the system
+      operationId: getAppointments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Appointment'
+      responses:
+        '200':
+          description: Successful operation
+        '500':
+          description: Internal Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    Appointment:
+      type: object
+      properties:
+        firstName:
+          type: string
+          example: 'Emily'
+        lastName:
+          type: string
+          example: 'Williams'
+        age:
+          type: integer
+          example: 43
+        neededExpertise:
+          type: string
+          example: 'Gastrology'
+        Date:
+          type: string
+          format: date
+          example: '2023-8-17'
+
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: 'Functional code specifying the error'
+          example: '2300'
+        message:
+          type: string
+          description: 'Brief explanation about the error, for more information consult the Appointment Service team'
+  
