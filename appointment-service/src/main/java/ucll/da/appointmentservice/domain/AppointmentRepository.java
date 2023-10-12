@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface AppointmentRepository extends CrudRepository<Appointment,Long> {
-    List<Appointment> getAppointmentByDoctorIdAndDate(Long doctor, LocalDate date);
+    List<Appointment> getAppointmentByDoctorIdAndPlannedDate(Long doctor, LocalDate date);
 }

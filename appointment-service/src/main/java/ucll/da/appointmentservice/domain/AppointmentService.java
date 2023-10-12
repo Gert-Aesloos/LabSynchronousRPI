@@ -36,7 +36,7 @@ public class AppointmentService {
 
         Doctor doctor = null;
         for (Doctor d: doctorList) {
-            List<Appointment> appointmentList = appointmentRepository.getAppointmentByDoctorIdAndDate(doctor.getId(), appointment.getDate());
+            List<Appointment> appointmentList = appointmentRepository.getAppointmentByDoctorIdAndPlannedDate(d.getId(), appointment.getPlannedDate());
 
             if (appointmentList.isEmpty()) {
                 doctor = d;
@@ -44,7 +44,7 @@ public class AppointmentService {
         }
 
         try {
-            Appointment newAppointment = new Appointment(appointment.getFirstName(), appointment.getLastName(), appointment.getDate(), appointment.getNeededExpertise(), doctor.getId());
+            Appointment newAppointment = new Appointment(appointment.getFirstName(), appointment.getLastName(), appointment.getPlannedDate(), appointment.getNeededExpertise(), doctor.getId());
             appointmentRepository.save(newAppointment);
         } catch (Exception e) {
             throw new RuntimeException("e");

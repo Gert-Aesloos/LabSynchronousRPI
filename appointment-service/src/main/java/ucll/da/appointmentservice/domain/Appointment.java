@@ -13,7 +13,7 @@ public class Appointment {
     private Long id;
     private String firstName;
     private String lastName;
-    private LocalDate date;
+    private LocalDate plannedDate;
     private String neededExpertise;
 
     private Long doctorId;
@@ -21,7 +21,7 @@ public class Appointment {
     public Appointment(String firstName, String lastName, LocalDate date, String neededExpertise, Long doctorId) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.date = date;
+        this.plannedDate = date;
         this.neededExpertise = neededExpertise;
         this.doctorId = doctorId;
     }
@@ -40,8 +40,8 @@ public class Appointment {
         return lastName;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getPlannedDate() {
+        return plannedDate;
     }
 
     public String getNeededExpertise() {
